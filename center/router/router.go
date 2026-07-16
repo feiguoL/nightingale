@@ -638,6 +638,7 @@ func (rt *Router) Config(r *gin.Engine) {
 		pages.PUT("/ai-skill/:id", rt.auth(), rt.user(), rt.perm("/ai-config/skills"), rt.aiSkillPut)
 		pages.DELETE("/ai-skill/:id", rt.auth(), rt.user(), rt.perm("/ai-config/skills"), rt.aiSkillDel)
 		pages.POST("/ai-skills/import", rt.auth(), rt.user(), rt.perm("/ai-config/skills"), rt.aiSkillImport)
+		pages.POST("/ai-skills/url/import", rt.auth(), rt.user(), rt.perm("/ai-config/skills"), rt.aiSkillURLImport)
 		pages.PUT("/ai-skill/:id/import", rt.auth(), rt.user(), rt.perm("/ai-config/skills"), rt.aiSkillImportUpdate)
 		pages.POST("/ai-skills/git/install", rt.auth(), rt.user(), rt.perm("/ai-config/skills"), rt.aiSkillGitInstall)
 		pages.PUT("/ai-skill/:id/git/install", rt.auth(), rt.user(), rt.perm("/ai-config/skills"), rt.aiSkillGitInstallPut)
@@ -886,6 +887,7 @@ func (rt *Router) Config(r *gin.Engine) {
 			service.GET("/ai-skill/:id", rt.aiSkillGetWithFileContents)
 			service.POST("/ai-skills", rt.aiSkillAddByService)
 			service.POST("/ai-skills/import", rt.aiSkillImportByService)
+			service.POST("/ai-skills/url/import", rt.aiSkillURLImport)
 			service.PUT("/ai-skill/:id/import", rt.aiSkillImportUpdateByService)
 
 			service.GET("/ai-llm-configs", rt.aiLLMConfigGets)
